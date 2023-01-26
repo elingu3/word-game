@@ -1,0 +1,58 @@
+/* basic css formatting, not too sure about what we'd like the game to look like yet*/
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2, body {
+  font-family: sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  max-width: 500px;
+  background-color: violet;
+}
+
+#button {
+    background-color: #bbb;
+    padding: .5em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 6px;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    border: none;
+}
+
+#button:hover {
+    border: none;
+    background: rgb(152, 184, 239);
+    box-shadow: 0px 0px 1px #777;
+   }
+
+   #home {
+    background-color: #bbb;
+    padding: .5em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 6px;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    border: none;
+}
+
+#home:hover {
+    border: none;
+    background: rgb(152, 184, 239);
+    box-shadow: 0px 0px 1px #777;
+   }
+   input {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
