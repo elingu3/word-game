@@ -57,6 +57,7 @@ function submitWord(){
 
 	const text = document.getElementById("Textbox").value;
     const result = document.getElementById("Results");
+	
     if (text === ""){
         result.innerHTML = "Type a word!";
         return;
@@ -75,6 +76,7 @@ function submitWord(){
 		score += text.length;
 		document.getElementById("ScoreBoard").innerHTML = 'Points: '+score;
 		wordsFound[text.length-3].push(text.toLowerCase());
+		
 	}
 }
 
