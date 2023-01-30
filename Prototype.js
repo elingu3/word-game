@@ -68,7 +68,7 @@ document.addEventListener("keydown",function(event){ //Allows keybinds commands 
 
 //Returns back to home page
 function homePage() {
-	window.location.href = "Home.html";
+	window.location.href = "index.html";
 }
 
 //When player clicks submit button, function activates
