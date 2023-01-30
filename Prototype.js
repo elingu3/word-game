@@ -36,14 +36,33 @@ const words3 = ["oot","ope","opt","ore","pep","per","pet",
 //Complete 2d array of all words.
 const wordList = [words3,words4,words5,words6,words7,words8,words9];
 
+/*----------------------------------------------------------------------------------------------
+From here down all this code can be reused, just depends on how we load all the possible words.
+----------------------------------------------------------------------------------------------*/
+
+
 //Creates a new array to store all found words.
 let wordsFound = [];
 wordList.forEach(function(){
 wordsFound.push(new Array());
 })
 
+
 //Player's puzzle score
 let score = 0;
+let timerOn = false; //Prevents timer from being triggered more than once
+let gameOver = false; //If the game is still going
+
+document.getElementById("Textbox").focus(); //Immediately hovers cursor over text
+document.addEventListener("keydown",function(event){ //Allows keybinds commands to be utilized
+	if (event.code === 'Escape'){
+		homePage();
+	}
+	else if (event.code === 'Enter'){
+		document.getElementById("Textbox").focus();
+		submitWord();
+	}
+},true)
 
 
 
@@ -54,7 +73,9 @@ function homePage() {
 
 //When player clicks submit button, function activates
 function submitWord(){
-
+	if (gameOver){
+		return;
+	}
 	const text = document.getElementById("Textbox").value;
     const result = document.getElementById("Results");
 	
@@ -65,19 +86,20 @@ function submitWord(){
 	const wordReal = findWord(text,wordList);
 	const wordFound = findWord(text,wordsFound);
 	
-	
+	clock(60);
 	//If word was invalid
-	if(!wordReal) { result.innerHTML = "Invalid Word";}
+	if(!wordReal) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
 	//If word was already guessed
-	else if(wordFound) { result.innerHTML = "Word Already Used"; }
+	else if(wordFound) { result.innerHTML = text.toUpperCase() +" has already been used"; }
 	//If word meets all criteria to award points	
 	else{
-		result.innerHTML = "Word Successfully Found!";
+		result.innerHTML = "The word " + text.toUpperCase() + " has been successfully found!";
 		score += text.length;
 		document.getElementById("ScoreBoard").innerHTML = 'Points: '+score;
 		wordsFound[text.length-3].push(text.toLowerCase());
 		
 	}
+	document.getElementById("Textbox").value = "";
 }
 
 //Checks if the word is valid to distribute points.
@@ -97,4 +119,37 @@ function findWord(userWord, array){
 		}
 	}
 	return false;
+}
+
+//Creates a countdown timer
+//Parameter "time" is counted in seconds for the countdown.
+function clock(time) {
+	if (timerOn){ return; }
+	timerOn=true;
+	let start = new Date().getTime();
+	const end = start + (time * 1000);
+	
+	let countDown = setInterval(function(){
+	const now = end - start; //Time in miliseconds
+	const clock = document.getElementById("Clock");
+	let minutes = Math.floor(now/60000);
+	let seconds = Math.floor(now/1000%60);
+	start += 1000;
+	let format = Math.floor(minutes%10) + ":" + Math.floor(seconds/10) + Math.floor(seconds%10); 
+	clock.innerHTML = format;
+	if (now<0){
+		clearInterval(countDown);
+		clock.innerHTML = "Times up!";
+		timerOn = false;
+		endGame();
+	}
+	
+	},1000);	
+}
+
+//Function ends the game.
+function endGame(){
+	document.getElementById("button").setAttribute("disabled",true);
+	document.getElementById("ScoreBoard").innerHTML = "Final Score: "+score;
+	gameOver = true;
 }
