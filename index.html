@@ -10,12 +10,15 @@
       <h1><center>WordBlob!</center></h1>
       
       <center><button onclick="goToPage('Prototype.html')" id="start">Start</button></center>
-      <center><button onclick="goToPage('Leaderboard.html')">High Scores</button></center>
+      <div class="space"> </div>
+      <center><button onclick="goToPage('Leaderboard.html')" id="start">High Scores</button></center>
       <style>
         #start {
           @font-face {
           font-family: 'Pixel Digivolve';
           src: url(fonts/Pixel\ Digivolve.otf);
+          padding:10px 3px 10px 3px;
+          margin-bottom: 10px; 
           }
       background-color: #bbb;
       padding: .5em;
@@ -29,27 +32,18 @@
       border: none;
       }
 
-#start:hover {
+    #start:hover {
     border: none;
     background: rgb(152, 184, 239);
     box-shadow: 0px 0px 1px #777;
-   }
+    }
+
+   .space {
+    width: 4px;
+    height: auto;
+    display: inline-block;
+    }
       </style>
     </body>
-
-
-    <!--
-    Commented this out for now, I don't know how you plan to set up the layouts, but I think different files for each page can work
-    <div id="game">
-        <div id="target-word">Letters: <span id="target-word-value"></span></div>
-
-        <div id="scrambled-word">Enter a word made from these letters: <span id="scrambled-word-value"></span></div>
-        <div>
-          <input type="text" id="player-word" placeholder="Enter a word">
-          <button id="submit-button">Submit</button>
-        </div>
-        <div id="result"></div>
-      </div>
-      -->
 </head>
 </html>
