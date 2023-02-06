@@ -5,36 +5,10 @@ to be more efficient or easier to use.
 
 */
 
-const words9 = ["prototype"]; //1 word
-const words8 = ["topotype"]; //1 word
-const words7 = ["pottery"]; //1 word
-const words6 = ["poetry","popery","potter",
-									"pretty","ptooey","pyrope",
-									"tooter","topper","toppo"]; //9 Words
-const words5 = ["otter","petto","petty",
-									"poopy","potto","potty",
-									"preop","repot","rooty",
-									"ropey","rotte","tepoy",
-									"toper","torot","torte",
-									"toter","toyer","troop",
-									"trope"]; //19 Words
-const words4 = ["otto","oyer","pepo","perp","pert",
-									"poet","poop","poor","pope","pore",
-									"port","prep","prey","prop","pyre",
-									"pyro","repo","repp","root","rope",
-									"ropy","rote","roto","ryot","toot",
-									"tope","topo","tore","toro","tort",
-									"tory","tote","toyo","tret","trey",
-									"trop","trot","troy","tyer","type",
-									"typo","typp","tyre","tyro","yett",
-									"yore"]; //46 Words
-const words3 = ["oot","ope","opt","ore","pep","per","pet",
-									"poo","pop","pot","pro","pry","pye","rep",
-									"ret","roe","roo","rot","rye","tet","toe",
-									"too","top","tor","tot","toy","try","tye",
-									"yep","yer","yet"]; //31 Words
-//Complete 2d array of all words.
-const wordList = [words3,words4,words5,words6,words7,words8,words9];
+
+
+
+const wordList = prototype; //Retrieves object from Words.json
 
 /*----------------------------------------------------------------------------------------------
 From here down all this code can be reused, just depends on how we load all the possible words.
@@ -68,7 +42,7 @@ document.addEventListener("keydown",function(event){ //Allows keybinds commands 
 
 //Returns back to home page
 function homePage() {
-	window.location.href = "Home.html";
+	window.location.href = "index.html";
 }
 
 //When player clicks submit button, function activates
