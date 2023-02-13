@@ -29,3 +29,22 @@ prototype =
     ["topotype"],
     ["prototype"]]
 
+difficulty = [
+    ["difficulty"],
+    ["difficult"],
+    ["fluidity","lucidity"],
+    ["dulcify","fluidic"],
+    ["citify","cliffy","fitful","iffily","tidily"],
+    ["cliff","clit","culti","dicty","fifty",
+    "fitly","fluid","fluty","fluyt","icily",
+    "licit","lucid","ludic","lytic"],
+    ["city","cuff","cuif","cult","diff",
+    "duci","duff","duit","duly","duty",
+    "flic","flit","fuci","idly","idyl",
+    "iffy","lift","litu","luff","tidy",
+    "tiff","tuff"],
+    ["cud","cut","dif","dit","dui",
+    "fid","fil","fit","flu","fly",
+    "fud","icy","iff","lid","lit",
+    "lud","tic","til","tui","yid"]
+]

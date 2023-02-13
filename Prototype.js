@@ -13,7 +13,7 @@ const wordList = prototype; //Retrieves object from Words.json
 /*----------------------------------------------------------------------------------------------
 From here down all this code can be reused, just depends on how we load all the possible words.
 ----------------------------------------------------------------------------------------------*/
-
+//File dependent on Save.js, ensure Save.js is loaded in the page before this file.
 
 //Creates a new array to store all found words.
 let wordsFound = [];
@@ -26,6 +26,7 @@ wordsFound.push(new Array());
 let score = 0;
 let timerOn = false; //Prevents timer from being triggered more than once
 let gameOver = false; //If the game is still going
+let newHighScore = false; //If the player got a new high score
 
 document.getElementById("Textbox").focus(); //Immediately hovers cursor over text
 document.addEventListener("keydown",function(event){ //Allows keybinds commands to be utilized
@@ -47,19 +48,26 @@ function homePage() {
 
 //When player clicks submit button, function activates
 function submitWord(){
+	const text = document.getElementById("Textbox").value;
+    const result = document.getElementById("Results");
+	if (newHighScore){
+		save(text,score);
+		result.innerHTML = "Congradulations \"" + text + "\", on your new high score of "+score + "!";
+	}
+
+
+	//If game is over, do nothing
 	if (gameOver){
 		return;
 	}
-	const text = document.getElementById("Textbox").value;
-    const result = document.getElementById("Results");
-	
+	//If no text entered, "Type a word!"
     if (text === ""){
         result.innerHTML = "Type a word!";
         return;
     }
 	const wordReal = findWord(text,wordList);
 	const wordFound = findWord(text,wordsFound);
-	
+	//Timer function
 	clock(60);
 	//If word was invalid
 	if(!wordReal) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
@@ -126,4 +134,13 @@ function endGame(){
 	document.getElementById("button").setAttribute("disabled",true);
 	document.getElementById("ScoreBoard").innerHTML = "Final Score: "+score;
 	gameOver = true;
+
+	//Saving information
+	let highScores = getLeaderBoard();
+	if (highScores[highScores.length-1]["Score"] < score){
+    	const result = document.getElementById("Results");
+		result.innerHTML = "New High Score!\nEnter a username you would like to save in the textbox above.";
+		newHighScore = true;
+	}
+
 }
