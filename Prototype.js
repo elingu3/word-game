@@ -48,8 +48,11 @@ function homePage() {
 
 //When player clicks submit button, function activates
 function submitWord(){
+	//Gets objects from HTML page
 	const text = document.getElementById("Textbox").value;
     const result = document.getElementById("Results");
+
+	//If submitting highscore name
 	if (newHighScore){
 		save(text,score);
 		result.innerHTML = "Congradulations \"" + text + "\", on your new high score of "+score + "!";
@@ -135,10 +138,11 @@ function endGame(){
 	document.getElementById("ScoreBoard").innerHTML = "Final Score: "+score;
 	gameOver = true;
 
-	//Saving information
+	//If user's score is high enough to store
 	let highScores = getLeaderBoard();
 	if (highScores[highScores.length-1]["Score"] < score){
     	const result = document.getElementById("Results");
+		//Allows next text entry to be saved as leaderboard username
 		result.innerHTML = "New High Score!\nEnter a username you would like to save in the textbox above.";
 		newHighScore = true;
 	}
