@@ -7,9 +7,9 @@ to be more efficient or easier to use.
 
 
 
-
-const wordList = prototype; //Retrieves object from Words.json
-
+const puzzle = difficultyHard[Math.floor(Math.random()*difficultyHard.length)]; //Retrieves object from Words.json
+const wordList = puzzle.WordList;
+document.getElementById("letters").innerHTML = ("Letters: "+scrambleWord(puzzle.Name));
 /*----------------------------------------------------------------------------------------------
 From here down all this code can be reused, just depends on how we load all the possible words.
 ----------------------------------------------------------------------------------------------*/
@@ -68,14 +68,13 @@ function submitWord(){
         result.innerHTML = "Type a word!";
         return;
     }
-	const wordReal = findWord(text,wordList);
-	const wordFound = findWord(text,wordsFound);
+
 	//Timer function
 	clock(60);
 	//If word was invalid
-	if(!wordReal) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
+	if(!findWord(text,wordList)) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
 	//If word was already guessed
-	else if(wordFound) { result.innerHTML = text.toUpperCase() +" has already been used"; }
+	else if(findWord(text,wordsFound)) { result.innerHTML = text.toUpperCase() +" has already been used"; }
 	//If word meets all criteria to award points	
 	else{
 		result.innerHTML = "The word " + text.toUpperCase() + " has been successfully found!";
@@ -94,7 +93,7 @@ function submitWord(){
 function findWord(userWord, array){
 	const wordLength = userWord.length;
 	//Only words with 3 or more characters are valid
-	if (wordLength<3){
+	if (wordLength<3 || wordLength>array.length+2){
 		return false;
 	}
 	//Search through array for specified word
@@ -146,5 +145,24 @@ function endGame(){
 		result.innerHTML = "New High Score!\nEnter a username you would like to save in the textbox above.";
 		newHighScore = true;
 	}
+}
 
+//Takes in a String
+//Returns a randomly scrambled word with the same letters
+function scrambleWord(word){
+	for(let i=0; i<word.length; i++){
+		replace = Math.floor(Math.random()*(word.length-1))+1;
+		//if replace == i, function breaks
+		if (replace === i){
+			continue;
+		}
+		let max = Math.max(i,replace);
+		let min = Math.min(i,replace);
+		word = word.substring(0,min) +
+				word.charAt(max) +
+				word.substring(min+1,max) +
+				word.charAt(min) +
+				word.substring(max+1,word.length);
+	}
+	return word;
 }

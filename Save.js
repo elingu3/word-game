@@ -5,14 +5,11 @@
 function greatToLeast(list){
     for (let i=1; i<list.length; i++){
         let curObj = list[i];
-        console.log(curObj);
         let curIdx = i-1;
         while (curIdx > -1 && curObj.Score > list[curIdx].Score){
-            console.log(list[curIdx].Score + " less than " + curObj.Score)
             list[curIdx+1] = list[curIdx];
             curIdx--;
         }
-        console.log("Place " + curObj + " at "+ (curIdx+1));
         list[curIdx+1] = curObj;
     }
     return list;
@@ -35,10 +32,9 @@ function save(name, score){
 //If it doesn't exist, a default list is created and stored.
 function getLeaderBoard(){
     const storage = localStorage;
-    console.log("Attempting to retrieve leaderboard");
     let highScores = JSON.parse(storage.getItem("leaderBoard"));
     if (highScores === null){
-        console.log("Creating default leaderboard");
+        //Creates default leaderboard
         highScores = [
             {"Name": "---",
             "Score": 0}   ,
