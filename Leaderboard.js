@@ -5,8 +5,6 @@
 const list = document.getElementById("list");
 let highScores = getLeaderBoard();
 highScores.forEach(function (idx) {
-    console.log(idx);
-    console.log(idx.Name);
     listObject = document.createElement("li");
     listObject.innerHTML = idx.Name +" : " + idx.Score;
     list.appendChild(listObject);

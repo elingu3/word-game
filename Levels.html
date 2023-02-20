@@ -9,9 +9,11 @@
       <h2><center>welcome to</center></h2>
       <h1><center>WordBlob!</center></h1>
       
-      <center><button onclick="goToPage('Levels.html')" id="start">Start</button></center>
+      <center><button onclick="loadPuzzle(0)" id="start">Easy</button></center>
       <div class="space"> </div>
-      <center><button onclick="goToPage('Leaderboard.html')" id="start">High Scores</button></center>
+      <center><button onclick="loadPuzzle(1)" id="start">Medium</button></center>
+      <div class="space"> </div>
+      <center><button onclick="loadPuzzle(2)" id="start">Hard</button></center>
       <style>
         #start {
           @font-face {

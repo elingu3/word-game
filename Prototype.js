@@ -5,9 +5,23 @@ to be more efficient or easier to use.
 
 */
 
+let difficultyNum = sessionStorage.getItem("difficulty");
+const levelText = document.getElementById("difficulty");
+//Load easy puzzle by default
+let difficulty = difficultyEasy;
+//Load medium puzzle
+if (difficultyNum == 1){
+	difficulty = difficultyMedium;
+	levelText.innerHTML = "Difficulty: Medium";
+}
+//Load difficult puzzle
+else if (difficultyNum == 2){
+	difficulty = difficultyHard;
+	levelText.innerHTML = "Difficulty: Hard";
+}
 
 
-const puzzle = difficultyHard[Math.floor(Math.random()*difficultyHard.length)]; //Retrieves object from Words.json
+const puzzle = difficulty[Math.floor(Math.random()*difficulty.length)]; //Retrieves object from Words.json
 const wordList = puzzle.WordList;
 document.getElementById("letters").innerHTML = ("Letters: "+scrambleWord(puzzle.Name));
 /*----------------------------------------------------------------------------------------------
