@@ -37,7 +37,24 @@ difficultyMedium =
             ["mimed","ummed"],
             ["medium"]
         ]
-    }
+    },
+    
+    {
+		"Name":"center",
+		"WordList":
+		[
+			["cee","ere","ern","nee","net",
+			"rec","ree","ret","tec","tee",
+			"ten"],
+			["cent","cere","cert","cete",
+			"erne","rent","rete","teen",
+			"tern","tree"],
+			["enter","erect","rente","terce",
+			"terne","treen"],
+			["center","centre","recent","tenrec"]
+		],
+	}
+
 ]
 
 
@@ -100,5 +117,69 @@ difficultyHard =
             ["difficult"],
             ["difficulty"]
         ]
-    }
+    },
+
+    {
+		"Name":"scramble",
+		"WordList":
+		[
+			["abs","ace","alb","ale","als",
+				"arb","arc","are","arm","ars",
+				"bal","bam","bar","bas","bel",
+				"bes","bra","cab","cal","cam",
+				"car","cel","ear","elm","els",
+				"ems","era","ers","lab","lac",
+				"lam","lar","las","lea","les",
+				"mac","mae","mar","mas","mel",
+				"mes","ram","ras","reb","rec",
+				"rem","res","sab","sac","sae",
+				"sal","sea","sec","sel","ser"],
+			["able","aces","acme","albs","alec",
+				"ales","alme","alms","arbs","arcs",
+				"ares","arms","arse","bale","balm",
+				"bals","bams","bare","barm","bars",
+				"base","beal","beam","bear","bels",
+				"bema","berm","blae","blam","brae",
+				"bras","cabs","calm","cals","came",
+				"cams","carb","care","carl","cars",
+				"case","cels","clam","crab","cram",
+				"earl","ears","elms","eras","labs",
+				"lace","lacs","lamb","lame","lams",
+				"lars","lase","lear","leas","mabe",
+				"mace","macs","maes","male","marc",
+				"mare","marl","mesa","race","rale",
+				"rams","rase","real","ream","rebs",
+				"recs","rems","sabe","sale","same",
+				"scab","scam","scar","seal","sear",
+				"sera","slab","slam"],
+			["abler","ales","acerb","acmes","acres",
+				"alecs","almes","amber","arles","baler",
+				"bales","balms","bares","barms","baser",
+				"beals","beams","bears","bemas","berms",
+				"blame","blams","blare","blase","blear",
+				"brace","braes","bream","caber","cable",
+				"calms","camel","cames","carbs","cares",
+				"carle","carls","carse","clams","clear",
+				"crabs","crams","cream","earls","embar",
+				"escar","lacer","laces","lambs","lamer",
+				"lames","lares","laser","lears","mabes",
+				"macer","maces","macle","males","marcs",
+				"mares","marls","marse","maser","meals",
+				"mercs","merls","races","rales","realm",
+				"reals","reams","saber","sable","sabre",
+				"scale","scare","scram","serac","seral",
+				"smear"],
+			["ambers","ambler","ambles","balers","becalm",
+				"blamer","blames","blares","blears","braces",
+				"breams","cabers","cabler","cables","calmer",
+				"camber","camels","carles","clears","cramble",
+				"creams","embars","lacers","lamber","marcers",
+				"macles","marble","marcle","mescal","ramble",
+				"realms","sabler","scaler","sclera","scream"],
+			["amblers","becalms","blamers","cablers","crambers",
+				"clamber","crambes","lambers","marbles","marcels",
+				"rambles"],
+			["clambers","scramble"]
+		]
+	}
 ]

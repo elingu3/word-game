@@ -5,10 +5,10 @@ to be more efficient or easier to use.
 
 */
 
-let difficultyNum = sessionStorage.getItem("difficulty");
-const levelText = document.getElementById("difficulty");
-//Load easy puzzle by default
-let difficulty = difficultyEasy;
+
+let difficultyNum = sessionStorage.getItem("difficulty");//Retrieves difficulty
+const levelText = document.getElementById("difficulty");//Gets difficulty text
+let difficulty = difficultyEasy; //Load easy puzzle by default
 //Load medium puzzle
 if (difficultyNum == 1){
 	difficulty = difficultyMedium;
