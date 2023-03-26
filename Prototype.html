@@ -9,7 +9,11 @@ Otherwise we have to hide or remove certain elements each time to load a new "pa
 	<link href="style.css" rel="stylesheet" type="text/css" />
 
 	<button onclick="homePage()" class="returnHome" id="home">Exit</button>
-	<h1 id="difficulty">Difficulty: Easy</h1>
+	<h1 id="difficulty">Easy 
+		<div>
+		<span id="Clock">1:00</span>
+	</div>
+	</h1>
 	<h2 id="letters">Letters: ???</h2>
 	<body background="./images/wordBlob.png">
 		<input type="text" id="Textbox" placeholder="Enter Word" >
@@ -19,7 +23,8 @@ Otherwise we have to hide or remove certain elements each time to load a new "pa
 	<div>
 		<h3 id="Results"></h3>
 		<h2 id="ScoreBoard">Points: 0</h2>
-		<h2 id="Clock">1:00</h2>
+		<!--Moving clock to top right for visibility-->
+		<!--<h2 id="clock">1:00</h2>-->
 	</div>
 
 	<!--The script is moved down here to allow immediate cursor focus on the textbox-->

@@ -6,7 +6,10 @@
 }
 h1 {
     font-family: Pixel Digivolve;
-    font-size: 80px;
+    font-size: 60px;
+    margin: 10;
+    display: flex;
+    justify-content: space-between;
 }
 
 h2, body {
@@ -15,8 +18,15 @@ h2, body {
   margin-right: auto;
   font-size: 30px;  
   padding: 5px;
-  max-width: 500px;
+  max-width: 600px;
   
+}
+
+h4{
+  font-family: Pixel Digivolve;
+    font-size: 80px;
+    margin: 5;
+    justify-content: space-between;
 }
 
 #button {
@@ -62,3 +72,5 @@ h2, body {
     margin: 8px 0;
     box-sizing: border-box;
   }
+
+  

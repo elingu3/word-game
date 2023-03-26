@@ -12,12 +12,12 @@ let difficulty = difficultyEasy; //Load easy puzzle by default
 //Load medium puzzle
 if (difficultyNum == 1){
 	difficulty = difficultyMedium;
-	levelText.innerHTML = "Difficulty: Medium";
+	levelText.innerHTML = "Medium";
 }
 //Load difficult puzzle
 else if (difficultyNum == 2){
 	difficulty = difficultyHard;
-	levelText.innerHTML = "Difficulty: Hard";
+	levelText.innerHTML = "Hard";
 }
 
 
@@ -137,7 +137,7 @@ function clock(time) {
 	clock.innerHTML = format;
 	if (now<0){
 		clearInterval(countDown);
-		clock.innerHTML = "Times up!";
+		clock.innerHTML = "Time's up!";
 		timerOn = false;
 		endGame();
 	}
