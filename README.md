@@ -1,2 +1,2 @@
 # WordBlob
-https://chumpmoment.github.io/word-game/
+https://elingu3.github.io/word-game/
