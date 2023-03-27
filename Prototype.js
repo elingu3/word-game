@@ -15,7 +15,7 @@ let gameOver;
 let newHighScore;
 let duplicateList;
 
-startGame()
+startGame()//Main function
 
 document.getElementById("Textbox").focus(); //Immediately hovers cursor over text
 document.addEventListener("keydown",function(event){ //Allows keybinds commands to be utilized
@@ -35,11 +35,11 @@ function startGame(){
 	let difficulty = difficultyEasy; //Load easy puzzle by default
 	if (difficultyNum == 1){ //Load medium puzzle
 		difficulty = difficultyMedium;
-		levelText.innerHTML = "Difficulty: Medium";
+		levelText.innerHTML = "Medium" + "<div><span id=\"Clock\">1:00</span></div>";
 	}
 	else if (difficultyNum == 2){ //Load difficult puzzle
 		difficulty = difficultyHard;
-		levelText.innerHTML = "Difficulty: Hard";
+		levelText.innerHTML = "Hard" + "<div><span id=\"Clock\">1:00</span></div>";
 	}
 	
 	//This prevents repetative puzzles in back-to-back play throughs
@@ -66,8 +66,8 @@ function startGame(){
 
 	//Set HTML text to defaults
 	document.getElementById("Results").innerHTML = "";
-	document.getElementById("ScoreBoard").innerHTML = "Points: 0"
-	document.getElementById("Clock").innerHTML = "1:00"
+	document.getElementById("ScoreBoard").innerHTML = "Points: 0";
+	document.getElementById("Clock").innerHTML = "1:00";
 	if (sessionStorage.getItem("multiplayer") != "0"){
 		document.getElementById("multiStatus").innerHTML = "Player " + sessionStorage.getItem("multiplayer");
 	}
@@ -99,7 +99,7 @@ function submitWord(){
     }
 
 	//Timer function
-	clock(60);
+	clock(10); /*------------------------------------------------------Remember to change back to 60*/
 	//If word was invalid
 	if(!findWord(text,wordList)) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
 	//If word was already guessed
@@ -152,7 +152,7 @@ function clock(time) {
 	clock.innerHTML = format;
 	if (now<0){
 		clearInterval(countDown);
-		clock.innerHTML = "Times up!";
+		clock.innerHTML = "Time's up!";
 		timerOn = false;
 		endGame();
 	}
