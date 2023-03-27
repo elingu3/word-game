@@ -9,6 +9,7 @@ Otherwise we have to hide or remove certain elements each time to load a new "pa
 	<link href="style.css" rel="stylesheet" type="text/css" />
 
 	<button onclick="homePage()" class="returnHome" id="home">Exit</button>
+	<h4 id="multiStatus"></h4>
 	<h1 id="difficulty">Difficulty: Easy</h1>
 	<h2 id="letters">Letters: ???</h2>
 	<body background="./images/wordBlob.png">
@@ -20,10 +21,12 @@ Otherwise we have to hide or remove certain elements each time to load a new "pa
 		<h3 id="Results"></h3>
 		<h2 id="ScoreBoard">Points: 0</h2>
 		<h2 id="Clock">1:00</h2>
+		<button id="restartButton" onclick="restartGame()" class="button" style="display:none">Play Again</button>		
 	</div>
 
 	<!--The script is moved down here to allow immediate cursor focus on the textbox-->
 	<script src="Save.js"></script>
 	<script type="text/javascript" src="Words.json"></script>
 	<script type="text/javascript" src="Prototype.js"></script>
+
 </html>

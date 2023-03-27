@@ -21,6 +21,20 @@ difficultyEasy =
             ["dor","dow","rod","row"],
             ["word"]
         ]
+    },
+
+    {
+        "Name":"blast",
+        "WordList":
+        [
+            ["abs","alb","als","alt","bal",
+            "bas","bat","lab","las","lat",
+            "sab","sal","sat","tab","tas"],
+            ["albs","alts","bals","bast","bats",
+            "blat","labs","last","lats","salt",
+            "slab","slat","stab","tabs"],
+            ["blast","blats"]
+        ]
     }
 ]
 

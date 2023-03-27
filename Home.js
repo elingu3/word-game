@@ -1,5 +1,8 @@
-/*Each page might require it's own JS file, especially for 
-the puzzles so that extra unused functions don't take up memory.
+/*
+This file is to store simple
+helper functions that assist in
+the set up of the game, however
+are not actually used in the game.
 */
 
 //Loads prototype game
@@ -21,5 +24,11 @@ function loadPuzzle(difficulty){
 	//Hard=2   -- 8-10 Letters
 	sessionStorage.setItem("difficulty",difficulty);
 	goToPage("Prototype.html");
-	
+}
+
+//Stores "multi" as a integer into session storage
+//for Prototype.js to use and function accordingly
+function multiplayer(multi){
+	sessionStorage.setItem("multiplayer",multi);
+	goToPage("Levels.html");
 }

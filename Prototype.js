@@ -2,45 +2,20 @@
 Prototype Puzzle -
 Different organization/program may be changed
 to be more efficient or easier to use.
-
+File dependent on Save.js, ensure Save.js is loaded in the page before this file.
 */
 
 
-let difficultyNum = sessionStorage.getItem("difficulty");//Retrieves difficulty
-const levelText = document.getElementById("difficulty");//Gets difficulty text
-let difficulty = difficultyEasy; //Load easy puzzle by default
-//Load medium puzzle
-if (difficultyNum == 1){
-	difficulty = difficultyMedium;
-	levelText.innerHTML = "Difficulty: Medium";
-}
-//Load difficult puzzle
-else if (difficultyNum == 2){
-	difficulty = difficultyHard;
-	levelText.innerHTML = "Difficulty: Hard";
-}
+//Default global variables
+let wordList;
+let wordsFound;
+let score;
+let timerOn;
+let gameOver;
+let newHighScore;
+let duplicateList;
 
-
-const puzzle = difficulty[Math.floor(Math.random()*difficulty.length)]; //Retrieves object from Words.json
-const wordList = puzzle.WordList;
-document.getElementById("letters").innerHTML = ("Letters: "+scrambleWord(puzzle.Name));
-/*----------------------------------------------------------------------------------------------
-From here down all this code can be reused, just depends on how we load all the possible words.
-----------------------------------------------------------------------------------------------*/
-//File dependent on Save.js, ensure Save.js is loaded in the page before this file.
-
-//Creates a new array to store all found words.
-let wordsFound = [];
-wordList.forEach(function(){
-wordsFound.push(new Array());
-})
-
-
-//Player's puzzle score
-let score = 0;
-let timerOn = false; //Prevents timer from being triggered more than once
-let gameOver = false; //If the game is still going
-let newHighScore = false; //If the player got a new high score
+startGame()
 
 document.getElementById("Textbox").focus(); //Immediately hovers cursor over text
 document.addEventListener("keydown",function(event){ //Allows keybinds commands to be utilized
@@ -53,6 +28,50 @@ document.addEventListener("keydown",function(event){ //Allows keybinds commands 
 	}
 },true)
 
+//Initiates game, can be used to restart game as well.
+function startGame(){
+	let difficultyNum = sessionStorage.getItem("difficulty");//Retrieves difficulty
+	const levelText = document.getElementById("difficulty");//Gets difficulty text
+	let difficulty = difficultyEasy; //Load easy puzzle by default
+	if (difficultyNum == 1){ //Load medium puzzle
+		difficulty = difficultyMedium;
+		levelText.innerHTML = "Difficulty: Medium";
+	}
+	else if (difficultyNum == 2){ //Load difficult puzzle
+		difficulty = difficultyHard;
+		levelText.innerHTML = "Difficulty: Hard";
+	}
+	
+	//This prevents repetative puzzles in back-to-back play throughs
+	let puzzleIndex;
+	do{
+	puzzleIndex = Math.floor(Math.random()*difficulty.length);
+	}
+	while (puzzleIndex === duplicateList)
+	duplicateList = puzzleIndex;
+	
+	const puzzle = difficulty[puzzleIndex]; //Retrieves object from Words.json
+	wordList = puzzle.WordList;
+	document.getElementById("letters").innerHTML = ("Letters: "+scrambleWord(puzzle.Name));
+
+	//Creating a list for words found
+	wordsFound = [];
+	wordList.forEach(function(){
+	wordsFound.push(new Array());})
+	//Setting Default variables
+	score = 0; //Player's puzzle score
+	timerOn = false; //Prevents timer from being triggered more than once
+	gameOver = false; //If the game is still going
+	newHighScore = false; //If the player got a new high score
+
+	//Set HTML text to defaults
+	document.getElementById("Results").innerHTML = "";
+	document.getElementById("ScoreBoard").innerHTML = "Points: 0"
+	document.getElementById("Clock").innerHTML = "1:00"
+	if (sessionStorage.getItem("multiplayer") != "0"){
+		document.getElementById("multiStatus").innerHTML = "Player " + sessionStorage.getItem("multiplayer");
+	}
+}
 
 
 //Returns back to home page
@@ -69,14 +88,10 @@ function submitWord(){
 	//If submitting highscore name
 	if (newHighScore){
 		save(text,score);
-		result.innerHTML = "Congradulations \"" + text + "\", on your new high score of "+score + "!";
+		result.innerHTML = "congratulations \"" + text + "\", on your new high score of "+ score + "!";
 	}
-
-
 	//If game is over, do nothing
-	if (gameOver){
-		return;
-	}
+	if (gameOver) { return; }
 	//If no text entered, "Type a word!"
     if (text === ""){
         result.innerHTML = "Type a word!";
@@ -151,14 +166,21 @@ function endGame(){
 	document.getElementById("ScoreBoard").innerHTML = "Final Score: "+score;
 	gameOver = true;
 
-	//If user's score is high enough to store
+	//If user's score is high enough to store AND if they are in singleplayer mode
 	let highScores = getLeaderBoard();
-	if (highScores[highScores.length-1]["Score"] < score){
+	if (highScores[highScores.length-1]["Score"] < score && sessionStorage.getItem("multiplayer") === 0){
     	const result = document.getElementById("Results");
 		//Allows next text entry to be saved as leaderboard username
 		result.innerHTML = "New High Score!\nEnter a username you would like to save in the textbox above.";
 		newHighScore = true;
 	}
+	//Make the replay button visable/clickable
+	let restartButton = document.getElementById("restartButton");
+	restartButton.style.display = "block";
+	//Changes what the replay button says based on the situation the player(s) are in.
+	if (sessionStorage.getItem("multiplayer") == 1) { restartButton.innerHTML = "Continue"; }
+	else { restartButton.innerHTML = "Play Again"; }
+	multiplayerEnd();
 }
 
 //Takes in a String
@@ -179,4 +201,35 @@ function scrambleWord(word){
 				word.substring(max+1,word.length);
 	}
 	return word;
+}
+
+//MultiplayerEnd is a specific function in the event of ending a game in multiplayer mode.
+function multiplayerEnd(){
+	//if player 1 turn ended, start player 2 turn
+	if (gameOver && sessionStorage.getItem("multiplayer") == 1){
+		sessionStorage.setItem("player1Score",score); //Stores player 1's score while player 2 plays.
+		sessionStorage.setItem("multiplayer",2); //This will allow the following if statement to run after another game.
+		document.getElementById("Results").innerHTML = "Player 1 scored "+ score +" points!"
+												+"\nClick continue for Player 2's turn!";
+	}
+	//if player 2 turn ended, compare player 1 and player 2 score.
+	//Announces winner
+	else if(gameOver && sessionStorage.getItem("multiplayer") == 2){
+		const p1Score = sessionStorage.getItem("player1Score");
+		let winStatus = "won"; //Default response
+		if  (p1Score === score){ winStatus = "tied"; } //If player1 and player 2 earn the same score
+		else if (p1Score < score){ winStatus = "lost"; }//If player1 has a lower score than player 2
+		document.getElementById("Results").innerHTML = "Player 1 with a score of "+ 
+														p1Score + ", " + winStatus+ 
+														" against Player 2 with a score of " + 
+														score +"!";
+		//If player decides to play again.
+		sessionStorage.setItem("multiplayer",1);
+	}
+}
+
+//Restarts the game
+function restartGame(){
+	startGame();
+	document.getElementById("restartButton").style.display = "none";
 }
