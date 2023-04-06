@@ -89,6 +89,7 @@ function submitWord(){
 	if (newHighScore){
 		save(text,score);
 		result.innerHTML = "congratulations \"" + text + "\", on your new high score of "+ score + "!";
+		newHighScore = false;
 	}
 	//If game is over, do nothing
 	if (gameOver) { return; }
@@ -99,7 +100,7 @@ function submitWord(){
     }
 
 	//Timer function
-	clock(10); /*------------------------------------------------------Remember to change back to 60*/
+	clock(60); /*------------------------------------------------------Remember to change back to 60*/
 	//If word was invalid
 	if(!findWord(text,wordList)) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
 	//If word was already guessed
@@ -168,7 +169,7 @@ function endGame(){
 
 	//If user's score is high enough to store AND if they are in singleplayer mode
 	let highScores = getLeaderBoard();
-	if (highScores[highScores.length-1]["Score"] < score && sessionStorage.getItem("multiplayer") === 0){
+	if (highScores[highScores.length-1]["Score"] < score && sessionStorage.getItem("multiplayer") == 0){
     	const result = document.getElementById("Results");
 		//Allows next text entry to be saved as leaderboard username
 		result.innerHTML = "New High Score!\nEnter a username you would like to save in the textbox above.";
