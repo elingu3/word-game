@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'Pixel Digivolve';
-    src: url(fonts/Pixel\ Digivolve.otf);
+    src: url(/fonts/Nunito-VariableFont_wght.ttf);
 }
 h1 {
     font-family: Pixel Digivolve;
@@ -36,42 +36,48 @@ h4{
     justify-content: space-between;
 }
 
-#button, .button {
+.button, #button {
     background-color: #bbb;
-    padding: .5em;
+    padding: 10px 22px;
+    background: rgb(152, 184, 239);
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 6px;
     color: #fff;
     font-family: Pixel Digivolve;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     text-decoration: none;
     border: none;
 }
 
 #button:hover , .button:hover {
     border: none;
-    background: rgb(152, 184, 239);
     box-shadow: 0px 0px 1px #777;
 }
 
 #home {
-    background-color: #bbb;
-    padding: .5em;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 6px;
-    color: #fff;
-    font-family: Pixel Digivolve;
-    font-size: 20px;
-    text-decoration: none;
-    border: none;
+  background-color: #bbb;
+  padding: 10px 22px;
+  background: rgb(152, 184, 239);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 6px;
+  color: #fff;
+  font-family: Pixel Digivolve;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  border: none;
 }
 
 #home:hover {
-    border: none;
-    background: rgb(152, 184, 239);
-    box-shadow: 0px 0px 1px #777;
+  border: none;
+  box-shadow: 0px 0px 1px #777;
    }
    input {
     width: 80%;

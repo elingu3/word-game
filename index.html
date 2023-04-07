@@ -8,12 +8,17 @@
     <body background="./images/drip.png">
       
       <h4><center>WordBlob!</center></h4>
-      
+
+      <div class="levels-group" style="width:100%">
       <center><button onclick="multiplayer(0)" id="start">Single Player</button></center>
       <div class="space"> </div>
       <center><button onclick="multiplayer(1)" id="start">Multiplayer</button></center>
+      </div>
+      <div class="space"> </div>
+      <center><button onclick="goToPage('instructions.html')" id = "start">Instructions</button></button></center>
       <div class="space"> </div>
       <center><button onclick="goToPage('Leaderboard.html')" id="start">High Scores</button></center>
+      
       <style>
         #start {
           @font-face {
