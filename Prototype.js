@@ -35,11 +35,11 @@ function startGame(){
 	let difficulty = difficultyEasy; //Load easy puzzle by default
 	if (difficultyNum == 1){ //Load medium puzzle
 		difficulty = difficultyMedium;
-		levelText.innerHTML = "Medium" + "<div><span id=\"Clock\">1:00</span></div>";
+		levelText.innerHTML = "Medium" + "<div><span id=\"Clock\">0:30</span></div>";
 	}
 	else if (difficultyNum == 2){ //Load difficult puzzle
 		difficulty = difficultyHard;
-		levelText.innerHTML = "Hard" + "<div><span id=\"Clock\">1:00</span></div>";
+		levelText.innerHTML = "Hard" + "<div><span id=\"Clock\">0:30</span></div>";
 	}
 	
 	//This prevents repetative puzzles in back-to-back play throughs
@@ -67,7 +67,7 @@ function startGame(){
 	//Set HTML text to defaults
 	document.getElementById("Results").innerHTML = "";
 	document.getElementById("ScoreBoard").innerHTML = "Points: 0";
-	document.getElementById("Clock").innerHTML = "1:00";
+	document.getElementById("Clock").innerHTML = "0:30";
 	if (sessionStorage.getItem("multiplayer") != "0"){
 		document.getElementById("multiStatus").innerHTML = "Player " + sessionStorage.getItem("multiplayer");
 	}
@@ -100,7 +100,7 @@ function submitWord(){
     }
 
 	//Timer function
-	clock(60); /*------------------------------------------------------Remember to change back to 60*/
+	clock(30);
 	//If word was invalid
 	if(!findWord(text,wordList)) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
 	//If word was already guessed
@@ -108,7 +108,7 @@ function submitWord(){
 	//If word meets all criteria to award points	
 	else{
 		result.innerHTML = "The word " + text.toUpperCase() + " has been successfully found!";
-		score += text.length;
+		score += text.length * (3-sessionStorage.getItem("difficulty")); //Points awarded by word length TIMES difficulty multiplier
 		document.getElementById("ScoreBoard").innerHTML = 'Points: '+score;
 		wordsFound[text.length-3].push(text.toLowerCase());
 		
