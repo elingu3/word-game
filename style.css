@@ -1,11 +1,11 @@
 /* basic css formatting, not too sure about what we'd like the game to look like yet*/
 
 @font-face {
-    font-family: 'Pixel Digivolve';
-    src: url(/fonts/Nunito-VariableFont_wght.ttf);
+    font-family: 'Nunito';
+    src: url(./fonts/Nunito-VariableFont_wght.ttf);
 }
 h1 {
-    font-family: Pixel Digivolve;
+    font-family: Nunito;
     font-size: 60px;
     margin: 10;
     display: flex;
@@ -13,7 +13,7 @@ h1 {
 }
 
 h2, body {
-  font-family: Pixel Digivolve;
+  font-family: Nunito;
   margin-left: auto;
   margin-right: auto;
   font-size: 30px;  
@@ -23,14 +23,14 @@ h2, body {
 }
 
 h4{
-  font-family: Pixel Digivolve;
+  font-family: Nunito;
     font-size: 80px;
     margin: 5;
     justify-content: space-between;
 }
 
 h4{
-  font-family: Pixel Digivolve;
+  font-family: Nunito;
     font-size: 80px;
     margin: 5;
     justify-content: space-between;
@@ -44,7 +44,7 @@ h4{
     -webkit-border-radius: 5px;
     border-radius: 6px;
     color: #fff;
-    font-family: Pixel Digivolve;
+    font-family: Nunito;
     font-size: 18px;
     font-weight: 400;
     cursor: pointer;
@@ -66,7 +66,7 @@ h4{
   -webkit-border-radius: 5px;
   border-radius: 6px;
   color: #fff;
-  font-family: Pixel Digivolve;
+  font-family: Nunito;
   font-size: 18px;
   font-weight: 400;
   cursor: pointer;
