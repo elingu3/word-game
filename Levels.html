@@ -8,43 +8,64 @@
     <body background="./images/drip.png">
       <h4><center>WordBlob!</center></h4>
       
+      <div class="level-groups">
       <center><button onclick="loadPuzzle(0)" id="start">Easy</button></center>
       <div class="space"> </div>
       <center><button onclick="loadPuzzle(1)" id="start">Medium</button></center>
       <div class="space"> </div>
       <center><button onclick="loadPuzzle(2)" id="start">Hard</button></center>
       <div class="space"></div>
+    </div>
+    <div class="space"></div>
       <center><button onclick="goToPage('index.html')" class="returnHome" id="home">Exit</button></center>
       <style>
         #start {
           @font-face {
           font-family: 'Nunito';
-          src: url(./fonts/Nunito-VariableFont_wght.ttf);
+          src: url(../fonts/Nunito-VariableFont_wght.ttf);
           padding:10px 3px 10px 3px;
           margin-bottom: 10px; 
           }
-      background-color: #bbb;
-      padding: .5em;
-      -moz-border-radius: 5px;
-      -webkit-border-radius: 5px;
-      border-radius: 6px;
-      color: #fff;
-      font-family: Nunito;
-      font-size: 20px;
-      text-decoration: none;
-      border: none;
-      }
 
-    #start:hover {
+        background-color: #bbb;
+        padding: 10px 22px;
+        background: rgb(152, 184, 239);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 6px;
+        color: #fff;
+        font-family: Nunito;
+        font-size: 18px;
+        font-weight: 400;
+        cursor: pointer;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        border: none;
+        
+}
+
+#start:hover {
     border: none;
-    background: rgb(152, 184, 239);
     box-shadow: 0px 0px 1px #777;
-    }
+}
+
+   input {
+    width: 80%;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
 
    .space {
     width: 4px;
     height: auto;
     display: inline-block;
+    }
+
+    .level-groups{
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      
     }
       </style>
     </body>
