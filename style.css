@@ -1,12 +1,9 @@
 /* basic css formatting, not too sure about what we'd like the game to look like yet*/
 
-@font-face {
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
-  font-family: 'Nunito', sans-serif;
-    
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap');
+
 h1 {
-  font-family: 'Nunito';
+  font-family: 'Nunito', sans-serif;
     font-size: 60px;
     margin: 10;
     display: flex;
