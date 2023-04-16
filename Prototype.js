@@ -88,7 +88,7 @@ function submitWord(){
 	//If submitting highscore name
 	if (newHighScore){
 		save(text,score);
-		result.innerHTML = "congratulations \"" + text + "\", on your new high score of "+ score + "!";
+		result.innerHTML = "Congratulations " + text + " on your new high score of "+ score + "!";
 		newHighScore = false;
 	}
 	//If game is over, do nothing
