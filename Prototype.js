@@ -100,7 +100,7 @@ function submitWord(){
     }
 
 	//Timer function
-	clock(5);
+	clock(30);
 	//If word was invalid
 	if(!findWord(text,wordList)) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
 	//If word was already guessed
@@ -168,11 +168,11 @@ function endGame(){
 	gameOver = true;
 
 	//Unlocks next puzzle, currently will be upon completion
+	//Unlocks puzzle indefinately
 	const difficulty = JSON.parse(sessionStorage.getItem("difficulty"));
 	if (difficulty <= 1){
 		let access = JSON.parse(localStorage.getItem("levelAccess"));
 		access[difficulty] = true;
-		console.log(typeof(access));
 		localStorage.setItem("levelAccess",JSON.stringify(access));
 	}
 
