@@ -50,3 +50,4 @@ function getLeaderBoard(){
     }
     return highScores;
 }
+

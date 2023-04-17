@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <script src="Home.js"></script>
-    
+    <!--Levels.js was moved down to run effectively as the page loaded-->
     <body background="./images/drip.png">
       <h4><center>WordBlob!</center></h4>
       
       <div class="level-groups">
-      <center><button onclick="loadPuzzle(0)" id="start">Easy</button></center>
+      <center><button onclick="loadPuzzle(0)" class="start" id="easy">Easy</button></center>
       <div class="space"> </div>
-      <center><button onclick="loadPuzzle(1)" id="start">Medium</button></center>
+      <center><button onclick="loadPuzzle(1)" class="start" id="medium">Medium</button></center>
       <div class="space"> </div>
-      <center><button onclick="loadPuzzle(2)" id="start">Hard</button></center>
+      <center><button onclick="loadPuzzle(2)" class="start" id="hard" >Hard</button></center>
       <div class="space"></div>
     </div>
     <div class="space"></div>
       <center><button onclick="goToPage('index.html')" class="returnHome" id="home">Exit</button></center>
       <style>
-        #start {
+        .start {
           @font-face {
           font-family: 'Nunito';
           src: url('/fonts/Nunito-VariableFont_wght.ttf') format:('truetype');
@@ -44,9 +44,13 @@
         
 }
 
-#start:hover {
+.start:hover {
     border: none;
     box-shadow: 0px 0px 1px #777;
+}
+.start:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
    input {
@@ -69,5 +73,7 @@
     }
       </style>
     </body>
+    <!--Levels.js Script moved down here for loading purposes-->
+    <script src="Levels.js"></script>
 </head>
 </html>

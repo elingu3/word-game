@@ -100,7 +100,7 @@ function submitWord(){
     }
 
 	//Timer function
-	clock(30);
+	clock(5);
 	//If word was invalid
 	if(!findWord(text,wordList)) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
 	//If word was already guessed
@@ -166,6 +166,15 @@ function endGame(){
 	document.getElementById("button").setAttribute("disabled",true);
 	document.getElementById("ScoreBoard").innerHTML = "Final Score: "+score;
 	gameOver = true;
+
+	//Unlocks next puzzle, currently will be upon completion
+	const difficulty = JSON.parse(sessionStorage.getItem("difficulty"));
+	if (difficulty <= 1){
+		let access = JSON.parse(localStorage.getItem("levelAccess"));
+		access[difficulty] = true;
+		console.log(typeof(access));
+		localStorage.setItem("levelAccess",JSON.stringify(access));
+	}
 
 	//If user's score is high enough to store AND if they are in singleplayer mode
 	let highScores = getLeaderBoard();
