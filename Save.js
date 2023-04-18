@@ -19,20 +19,20 @@ function greatToLeast(list){
 //Takes in String name, int score
 function save(name, score){
     const storage = localStorage;
-
-    let leaderBoard = getLeaderBoard();
+    let diff = sessionStorage.getItem("difficulty");
+    let leaderBoard = getLeaderBoard(diff);
     leaderBoard.push({"Name": name,"Score": score});
     greatToLeast(leaderBoard);
     leaderBoard.pop();
-    storage.setItem("leaderBoard",JSON.stringify(leaderBoard));
+    storage.setItem("leaderBoard"+diff,JSON.stringify(leaderBoard));
 
 }
 
 //Returns the leaderboard list saved in local storage
 //If it doesn't exist, a default list is created and stored.
-function getLeaderBoard(){
+function getLeaderBoard(identifier){
     const storage = localStorage;
-    let highScores = JSON.parse(storage.getItem("leaderBoard"));
+    let highScores = JSON.parse(storage.getItem("leaderBoard"+identifier));
     if (highScores === null){
         //Creates default leaderboard
         highScores = [
@@ -46,7 +46,7 @@ function getLeaderBoard(){
             "Score": 0}   ,
             {"Name": "---",
             "Score": 0} ]
-        storage.setItem("leaderBoard",JSON.stringify(highScores));
+        storage.setItem("leaderBoard"+identifier,JSON.stringify(highScores));
     }
     return highScores;
 }

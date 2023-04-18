@@ -12,11 +12,23 @@ function getLevelAccess(){
     return access;
 }
 
-//Runs as the page loads:
+function leaderBoardLoad(diff){
+    sessionStorage.setItem("difficulty",diff);
+    goToPage('LeaderBoard.html');
+}
 
-if (sessionStorage.getItem("multiplayer") == 0){
+//Runs as the page loads:
+//If player wishes to access the leaderboard, adjust the buttons to redirect them
+if (sessionStorage.getItem("leaderBoard") == "true"){
+    document.getElementById("easy").setAttribute("onClick","leaderBoardLoad(0)");
+    document.getElementById("medium").setAttribute("onClick","leaderBoardLoad(1)");
+    document.getElementById("hard").setAttribute("onClick","leaderBoardLoad(2)");
+}
+//If the player is trying to play the game, lock certain levels until they meet a scoring thresh hold.
+else if (sessionStorage.getItem("multiplayer") == 0){
     let levelAccess = getLevelAccess();
     document.getElementById("medium").disabled = !levelAccess[0];
     document.getElementById("hard").disabled = !levelAccess[1];
 }
+
 

@@ -15,14 +15,26 @@ Format =
 difficultyEasy = 
 [
     {
-        "Name":"word",
+        "Name":"drink",
         "WordList":
         [   
-            ["dor","dow","rod","row"],
-            ["word"]
+            ["din","ink","irk","kid","kin","kir","rid","rin"],
+            ["dink","dirk","kind","kirn","rind","rink"],
+            ["drink"]
         ]
     },
 
+    {
+        "Name":"fight",
+        "WordList":
+        [
+            ["fig","fit","ghi","gif","git","hit"],
+            ["gift"],
+            ["fight"]
+
+        ]
+    },
+    
     {
         "Name":"blast",
         "WordList":

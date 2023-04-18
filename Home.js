@@ -23,6 +23,7 @@ function loadPuzzle(difficulty){
 	//Medium=1 -- 6-7  Letters
 	//Hard=2   -- 8-10 Letters
 	sessionStorage.setItem("difficulty",difficulty);
+	sessionStorage.setItem("leaderBoard",false);
 	goToPage("Prototype.html");
 }
 
@@ -30,5 +31,13 @@ function loadPuzzle(difficulty){
 //for Prototype.js to use and function accordingly
 function multiplayer(multi){
 	sessionStorage.setItem("multiplayer",multi);
+	sessionStorage.setItem("leaderBoard",false);
+	goToPage("Levels.html");
+}
+
+//Stores a boolean for Levels.js to reuse it's structure
+//This will adjust the button's functions in Levels.js
+function leaderBoardMenu(){
+	sessionStorage.setItem("leaderBoard",true);
 	goToPage("Levels.html");
 }

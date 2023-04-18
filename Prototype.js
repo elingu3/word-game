@@ -100,7 +100,7 @@ function submitWord(){
     }
 
 	//Timer function
-	clock(30);
+	clock(5);
 	//If word was invalid
 	if(!findWord(text,wordList)) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
 	//If word was already guessed
@@ -108,7 +108,7 @@ function submitWord(){
 	//If word meets all criteria to award points	
 	else{
 		result.innerHTML = "The word " + text.toUpperCase() + " has been successfully found!";
-		score += text.length * (3-sessionStorage.getItem("difficulty")); //Points awarded by word length TIMES difficulty multiplier
+		score += text.length; //Points awarded by word length
 		document.getElementById("ScoreBoard").innerHTML = 'Points: '+score;
 		wordsFound[text.length-3].push(text.toLowerCase());
 		
@@ -170,7 +170,7 @@ function endGame(){
 	//Unlocks next puzzle, currently will be upon completion
 	//Unlocks puzzle indefinately
 	const difficulty = JSON.parse(sessionStorage.getItem("difficulty"));
-	if (difficulty <= 1){
+	if (difficulty <= 1 && score >= 15){
 		let access = JSON.parse(localStorage.getItem("levelAccess"));
 		access[difficulty] = true;
 		localStorage.setItem("levelAccess",JSON.stringify(access));
