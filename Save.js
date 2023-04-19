@@ -19,7 +19,7 @@ function greatToLeast(list){
 //Takes in String name, int score
 function save(name, score){
     const storage = localStorage;
-    let diff = sessionStorage.getItem("difficulty");
+    let diff = sessionStorage.getItem("difficulty"); //Used to identify different difficulties
     let leaderBoard = getLeaderBoard(diff);
     leaderBoard.push({"Name": name,"Score": score});
     greatToLeast(leaderBoard);

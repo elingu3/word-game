@@ -14,7 +14,7 @@ function getLevelAccess(){
 
 function leaderBoardLoad(diff){
     sessionStorage.setItem("difficulty",diff);
-    goToPage('LeaderBoard.html');
+    goToPage('Leaderboard.html');
 }
 
 //Runs as the page loads:
