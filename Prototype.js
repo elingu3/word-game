@@ -100,7 +100,7 @@ function submitWord(){
     }
 
 	//Timer function
-	clock(5);
+	clock(30); //MAKE SURE THIS STAYS CONSISTANT
 	//If word was invalid
 	if(!findWord(text,wordList)) { result.innerHTML = text.toUpperCase() +" is an invalid word.";}
 	//If word was already guessed
