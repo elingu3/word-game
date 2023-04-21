@@ -20,11 +20,11 @@ h2, body {
   
 }
 
-h4{
+h1{
   font-family: Nunito;
     font-size: 80px;
     margin: 0.5;
-    justify-content: space-between;
+    text-align: center;
 }
 
 h4{
